@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages, isread) {
     this.id = crypto.randomUUID();
@@ -24,7 +24,7 @@ function displayBooks() {
 
     myLibrary.forEach(book => {
         const card = document.createElement("div");
-        card.cardlist.add("book-card");
+        card.classList.add("book-card");
 
         card.setAttribute("data-id", book.id);
 
@@ -57,3 +57,45 @@ function displayBooks() {
         bookContainer.appendChild(card);
     });
 }
+
+function removeBookFromLibrary(bookId) {
+    myLibrary = myLibrary.filter(book => book.id !== bookId);
+    displayBooks();
+}
+
+function toggleBookReadStatus(bookId) {
+    const book = myLibrary.find(book => book.id === bookId);
+    if(book) {
+        book.toggleReadStatus();
+    } else {
+        console.warn(`Book with id ${bookId} not found`);
+    }
+    displayBooks();
+}
+
+const newBookBtn = document.querySelector(".new-Book-btn");
+const dialog = document.querySelector(".book-dialog");
+const cancelbtn = document.querySelector(".cancel-btn");
+const form = document.querySelector(".book-form");
+
+newBookBtn.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+cancelbtn.addEventListener("click", () => {
+    dialog.close();
+});
+
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const title = document.querySelector("#title").value;
+    const author = document.querySelector("#author").value;
+    const pages = document.querySelector("#pages").value;
+    const isread = document.querySelector("#isread").checked;
+
+    addBookToLibrary(title, author, pages, isread);
+
+    form.reset();
+    dialog.close();
+})
