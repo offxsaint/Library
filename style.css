@@ -1,0 +1,60 @@
+body {
+    font-family: 'Comic Sans MS';
+    min-height: 100vh;
+    font-size: 20px;
+    background-color: #f7cee2;
+    margin: 0px;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-Book-btn {
+    display: flex;
+    flex: wrap;
+    padding: 10px 40px 10px 40px;
+    border-radius: 20px;
+    border: 1px solid #f7cee2;
+    font-weight: bold;
+    color: white;
+    background-color: grey;
+}
+
+.new-Book-btn:hover {
+    background-color: darkcyan;
+    box-shadow: 2px 2px 5px grey;
+}
+
+.book-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.book-card {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: white;
+}
+
+.book-card button {
+    margin: 5px 5px 0 0;
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+.remove-btn:hover {
+    background-color: red;
+}
+
+.toggle-btn:hover {
+    background-color: green;
+}
